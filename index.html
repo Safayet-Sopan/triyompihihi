@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Valentine's Day Proposal</title>
+        <style>
+            body {
+                text-align: center;
+                background-color: pink;
+                font-family: Arial, sans-serif;
+            }
+            h1 {
+                color: white;
+                font-size: 30px;
+            }
+            .button-container {
+                margin-top: 20px;
+            }
+            button {
+                font-size: 16px;
+                padding: 10px 20px;
+                margin: 10px;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+            #yesBtn {
+                background-color: hotpink;
+                color: white;
+                font-size: 16px;
+            }
+            #noBtn {
+                background-color: deeppink;
+                color: white;
+            }
+            #cryLabel {
+                font-size: 24px;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="question">Will you be my Valentine? 🥺</h1>
+        <div class="button-container">
+            <button id="yesBtn" onclick="acceptProposal()">Yes? 🥺</button>
+            <button id="noBtn" onclick="declineProposal()">No? 😭</button>
+        </div>
+        <p id="cryLabel"></p>
+
+        <script>
+            let noClicks = 0;
+            let cryEmojis = "";
+            let yesBtn = document.getElementById("yesBtn");
+
+            function acceptProposal() {
+                document.body.innerHTML = "<h1>I knew you'd say yes! 😘</h1>";
+            }
+
+            function declineProposal() {
+                noClicks++;
+                document.getElementById("noBtn").innerText = "Are you sure? 🥺";
+
+                // Increase Yes button size
+                let currentSize = parseInt(
+                    window.getComputedStyle(yesBtn).fontSize,
+                );
+                yesBtn.style.fontSize = currentSize + 69 + "px";
+                yesBtn.style.padding =
+                    10 + noClicks * 5 + "px " + (20 + noClicks * 5) + "px";
+
+                // Update crying emojis
+                cryEmojis += " 😭";
+                document.getElementById("cryLabel").innerText = cryEmojis;
+            }
+        </script>
+    </body>
+</html>
